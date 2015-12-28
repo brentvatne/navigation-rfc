@@ -5,7 +5,7 @@
   "dependencies": {
     "fbjs": "^0.5.1",
     "immutable": "^3.7.6",
-    "react-native": "ericvicenti/react-native#2015-10-08-xde",
+    "react-native": "exponentjs/react-native#2015-12-18",
     "tinycolor": "0.0.1"
   }
 }
