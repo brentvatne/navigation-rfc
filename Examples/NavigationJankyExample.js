@@ -20,11 +20,18 @@ class NavigationAnimatedExample extends React.Component {
   render() {
     return (
       <Navigation.RootContainer
-        initialStack={new Navigation.Stack([ {id: 'root'} ], 0)}
+        initialStack={new Navigation.Stack([ {id: 'root', title: 'Hello!'} ], 0)}
         renderNavigator={(stack, onNavigation) => (
           <Navigation.AnimatedStackView
             stack={stack}
             renderRoute={(props) => this._renderRoute(props, onNavigation)}
+            style={{flex: 1}}
+            renderOverlay={(props) => (
+              <Navigation.HeaderView
+                {...props}
+                getTitle={route => route.title}
+              />
+            )}
           />
         )}
       />
@@ -41,7 +48,7 @@ class NavigationAnimatedExample extends React.Component {
           <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <TouchableOpacity
               style={{padding: 20, backgroundColor: '#ccc', borderRadius: 5}}
-              onPress={() => { onNavigation(new Navigation.Action.Push({id: 'list'})); }}>
+              onPress={() => { onNavigation(new Navigation.Action.Push({id: 'list', title: '/r/reactnative'})); }}>
               <Text style={{fontSize: 15}}>Go to /r/reactnative!</Text>
             </TouchableOpacity>
           </View>
@@ -52,7 +59,7 @@ class NavigationAnimatedExample extends React.Component {
         <Navigation.CardView
           {...props }>
           <ExpensiveListView
-            onPressStory={(url) => { onNavigation(new Navigation.Action.Push({id: 'detail', url})); }}
+            onPressStory={(url) => { onNavigation(new Navigation.Action.Push({id: 'detail', title: 'Detail', url})); }}
           />
         </Navigation.CardView>
       )

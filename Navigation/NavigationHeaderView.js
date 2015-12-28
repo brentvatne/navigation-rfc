@@ -40,6 +40,7 @@ class NavigationHeaderView extends React.Component {
   _renderTitle(route, index, key) {
     return (
       <Animated.Text
+        key={index.toString()}
         style={[
           styles.title,
           {opacity: this.props.position.interpolate({
